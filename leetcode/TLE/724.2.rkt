@@ -1,0 +1,16 @@
+(define/contract (pivot-index nums)
+  (-> (listof exact-integer?) exact-integer?)
+(letrec ((index (lambda (n)
+(let ((left (apply + (map (lambda (n) (list-ref nums n)) (range n))))
+(right (apply + (map (lambda (n) (list-ref nums n)) (range (add1 n) (length nums))))))
+(if (= left right)
+n
+(if (= n (- (length nums) 2))
+(if (zero? (+ left (list-ref nums n)))
+(add1 n)
+-1
+)
+(index (add1 n))
+))))))
+(index 0))
+  )
