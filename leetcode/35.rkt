@@ -8,7 +8,6 @@
         (cond
         ((= (list-ref nums n) target) n)
         ((and (< target (list-ref nums n)) (> target (list-ref nums (- n 1))))  n)
-
         ((< target (list-ref nums (- (length nums) 1))) (search(add1 n)))))))
         (search 1))))
       )
